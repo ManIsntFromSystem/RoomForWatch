@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/navigation_tops"
+    android:id="@+id/navigation_rooms">
+
+    <fragment
+        android:id="@+id/navigation_tops"
+        android:name="com.quantumman.roomforwatch.fragments.TopsMoviesFragment"
+        android:label="fragment_tops"
+        tools:layout="@layout/fragment_tops"/>
+
+    <fragment
+        android:id="@+id/navigation_map"
+        android:name="com.quantumman.roomforwatch.fragments.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map"/>
+
+    <fragment
+        android:id="@+id/navigation_favourites"
+        android:name="com.quantumman.roomforwatch.fragments.FavouritesMoviesFragment"
+        android:label="fragment_favourites"
+        tools:layout="@layout/fragment_favourites"/>
+
+    <fragment
+        android:id="@+id/navigation_user"
+        android:name="com.quantumman.roomforwatch.fragments.UserFragment"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user"/>
+
+</navigation>
