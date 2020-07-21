@@ -26,7 +26,8 @@ class MainActivity : AppCompatActivity() {
 
         botNavView = findViewById(R.id.bottom_navigation)
 
-        if (savedInstanceState == null) loadFragments(TopsMoviesFragment())
+        if (savedInstanceState == null)
+            loadFragments(TopsMoviesFragment())
         initNavigation()
     }
 
@@ -56,9 +57,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadFragments(fragment: Fragment) {
         supportFragmentManager.beginTransaction().also {
+            println("loadFragments future from Main")
             it.replace(R.id.fragment_container, fragment)
-            it.addToBackStack(null)
-            it.commit()
+            it.commitAllowingStateLoss()
         }
     }
 

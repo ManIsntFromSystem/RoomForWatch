@@ -4,4 +4,11 @@
     <string name="nav_item_map">Map</string>
     <string name="nav_item_favourites">Favourites</string>
     <string name="nav_item_my_room">My Room</string>
+    <string name="text_title_category">Most Popular</string>
+
+    //category names
+    <string name="category_now_playing">Now Playing</string>
+    <string name="category_most_popular">The Most Popular</string>
+    <string name="category_latest">Latest</string>
+    <string name="category_top_rated">Top Rated</string>
 </resources>

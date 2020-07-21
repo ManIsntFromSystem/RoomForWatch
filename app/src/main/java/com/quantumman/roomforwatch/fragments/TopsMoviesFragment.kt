@@ -1,31 +1,35 @@
 package com.quantumman.roomforwatch.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.quantumman.roomforwatch.R
+import com.quantumman.roomforwatch.adapters.TopPageAdapter
+import com.quantumman.roomforwatch.databinding.FragmentTopsBinding
+import com.quantumman.roomforwatch.model.base.ListItem
+import com.quantumman.roomforwatch.delegates.TopsPageDelegate
+import com.quantumman.roomforwatch.helpers.viewBinding
 import com.quantumman.roomforwatch.vm.TopsMoviesViewModel
 
-class TopsMoviesFragment : Fragment() {
+class TopsMoviesFragment : Fragment(R.layout.fragment_tops) {
 
-    private val topsVM: TopsMoviesViewModel by activityViewModels()
+  private val binding by viewBinding { FragmentTopsBinding.bind(it) }
+  private val viewModel by viewModels<TopsMoviesViewModel>()
+  private val adapter = TopPageAdapter()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val root = inflater.inflate(R.layout.fragment_tops, container, false)
-        val textView: TextView = root.findViewById(R.id.text_top)
-        topsVM.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+
+    with(binding) {
+      recyclerTopPage.adapter = adapter
+      println("TopsMoviesFragment Binding")
+      viewModel.data.observe(viewLifecycleOwner, Observer {
+        println("TopsMoviesFragment Observe")
+        adapter.items = it
+      })
     }
+  }
 }

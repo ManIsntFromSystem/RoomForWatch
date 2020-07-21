@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="card_wide_movie_width">240dp</dimen>
+  <dimen name="card_wide_movie_height">166dp</dimen>
+
+  <dimen name="card_thin_movie_width">146dp</dimen>
+  <dimen name="card_thin_movie_height">208dp</dimen>
+
+  <dimen name="card_movie_radius">10dp</dimen>
+
+</resources>

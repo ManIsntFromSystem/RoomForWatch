@@ -4,6 +4,6 @@ import com.quantumman.domain.models.Movie
 import kotlinx.coroutines.Deferred
 
 interface MovieRepository {
-    suspend fun receiveMoviesAsync(): Deferred<List<Movie>>
-    suspend fun receiveLocalMoviesAsync(): Deferred<List<Movie>>
+    suspend fun fetchMoviesAsync(): Deferred<List<Movie>>
+    suspend fun fetchLocalMoviesAsync(): Deferred<List<Movie>>
 }

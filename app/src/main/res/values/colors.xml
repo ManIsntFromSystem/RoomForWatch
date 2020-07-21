@@ -3,4 +3,11 @@
     <color name="colorPrimary">#7C40D3</color>
     <color name="colorPrimaryDark">#5819E8</color>
     <color name="colorAccent">#0AF4DD</color>
+
+    <color name="appWhite">#FFFAFAFA</color>
+    <color name="appBlack">#FF000A12</color>
+
+    <color name="titleTextCategory">@color/appWhite</color>
+    <color name="titleTextMovieName">@color/appWhite</color>
+  <color name="spaceFiller">#A2716773</color>
 </resources>
