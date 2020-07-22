@@ -1,4 +1,4 @@
-package com.quantumman.roomforwatch.vm
+package com.quantumman.roomforwatch.vm.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,18 +7,20 @@ import com.quantumman.data.remote.helpers.NetworkComponents
 import com.quantumman.data.remote.model.base.Api
 import com.quantumman.roomforwatch.model.base.ListItem
 import com.quantumman.roomforwatch.model.movies.*
+import com.quantumman.roomforwatch.util.ResourceProvider
+import com.quantumman.roomforwatch.vm.base.BaseViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class TopsMoviesViewModel() :
-  BaseViewModel() { //param (private val repository: MovieRepository) // interface LifecycleObserver,
+
+class TopsMoviesViewModel @Inject constructor(private val resources: ResourceProvider) : BaseViewModel() { //param (private val repository: MovieRepository) // interface LifecycleObserver,
 
   private val _data = MutableLiveData<List<ListItem>>()
   val data: LiveData<List<ListItem>> = _data
-
   private val api = NetworkComponents.createApi()
 
-  init {
+    init {
     viewModelScope.launch(Dispatchers.IO) {
       _data.postValue(getLoaders())
       val items = getItems()
@@ -31,16 +33,13 @@ class TopsMoviesViewModel() :
     return listOf(
       TopsMoviesHorizontalItem(
         title = "Now playing",
-        movies = IntRange(1, 2).map { ProgressWideItem }
+        movies = IntRange(1, 3).map { ProgressThinItem }
       ), TopsMoviesHorizontalItem(
         title = "The most popular",
         movies = IntRange(1, 3).map { ProgressThinItem }
       ), TopsMoviesHorizontalItem(
-        title = "Latest",
-        movies = IntRange(1, 2).map { ProgressWideItem }
-      ), TopsMoviesHorizontalItem(
-        title = "Top rated",
-        movies = IntRange(1, 2).map { ProgressWideItem }
+        title = "Upcoming",
+        movies = IntRange(1, 3).map { ProgressThinItem }
       )
     )
   }
@@ -48,43 +47,22 @@ class TopsMoviesViewModel() :
   private suspend fun getItems(): List<ListItem> {
     val result = mutableListOf<ListItem>()
     try {
-      val nowPlayingResponse = api.fetchAllMovies(category = "now_playing")
-      val popularResponse = api.fetchAllMovies(category = "popular")
-      val latestResponse = api.fetchAllMovies(category = "latest")
-      val topRatedResponse = api.fetchAllMovies(category = "top_rated")
+      val nowPlayingResponse = api.fetchNowPlayingMovies()
+      val popularResponse = api.fetchPopularMovies()
+      val upcomingResponse = api.fetchUpcomingMovies()
+      val topRatedResponse = api.fetchTopRatedMovies()
 
       val nowPlayingItems = nowPlayingResponse.results.map {
-        ItemTopsMovieWide(
-          id = it.id,
-          title = it.title,
-          image = Api.getPosterPath(it.posterHorizontal)
-        )
+        ItemTopsMovieThin(id = it.id, title = it.title, image = Api.getPosterPath(it.posterVertical))
       }
       val popularItems = popularResponse.results.map {
-        println(
-          "Id: ${it.id}/n" +
-              "Title: ${it.title}/n" +
-              "image: ${it.posterHorizontal}/n"
-        )
-        ItemTopsMovieThin(
-          id = it.id,
-          title = it.title,
-          image = Api.getPosterPath(it.posterHorizontal)
-        )
+        ItemTopsMovieThin(id = it.id, title = it.title, image = Api.getPosterPath(it.posterVertical))
       }
-      val latestItems = latestResponse.results.map {
-        ItemTopsMovieThin(
-          id = it.id,
-          title = it.title,
-          image = Api.getPosterPath(it.posterHorizontal)
-        )
+      val upcomingItems = upcomingResponse.results.map {
+        ItemTopsMovieThin(id = it.id, title = it.title, image = Api.getPosterPath(it.posterVertical))
       }
       val topRatedItems = topRatedResponse.results.map {
-        ItemTopsMovieThin(
-          id = it.id,
-          title = it.title,
-          image = Api.getPosterPath(it.posterHorizontal)
-        )
+        ItemTopsMovieThin(id = it.id, title = it.title, image = Api.getPosterPath(it.posterVertical))
       }
 
       result += listOf(
@@ -97,8 +75,8 @@ class TopsMoviesViewModel() :
           movies = popularItems
         ),
         TopsMoviesHorizontalItem(
-          title = "Latest",
-          movies = latestItems
+          title = "Upcoming",
+          movies = upcomingItems
         ),
         TopsMoviesHorizontalItem(
           title = "Top rated",
@@ -131,35 +109,3 @@ class TopsMoviesViewModel() :
 //      }
 //    }
 //  }
-
-
-/*
-    println("Get Items")
-    delay(3000L)
-    return listOf(
-      TopsMoviesHorizontalItem(
-        title = "Top Movies",
-        movies = (1..13).map {
-          ItemTopsMovieWide(
-            id = it,
-            title = "Top Movie $it"
-          )
-        }
-      ), TopsMoviesHorizontalItem(
-        title = "Popular Movies",
-        movies = (1..13).map {
-          ItemTopsMovieThin(
-            id = it,
-            title = "Popular Movie $it"
-          )
-        }
-      ), TopsMoviesHorizontalItem(
-        title = "Rating Movies",
-        movies = (1..13).map {
-          ItemTopsMovieWide(
-            id = it,
-            title = "Rating Movie $it"
-          )
-        }
-      )
-    ) */

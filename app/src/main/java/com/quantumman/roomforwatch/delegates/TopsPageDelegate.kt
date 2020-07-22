@@ -1,9 +1,11 @@
 package com.quantumman.roomforwatch.delegates
 
+import android.app.Activity
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
-import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import com.quantumman.roomforwatch.R
 import com.quantumman.roomforwatch.adapters.TopMoviesHorizontalAdapter
@@ -44,31 +46,47 @@ object TopsPageDelegate {
 
       bind {
         println("Bind TopWideBinding")
-        val radius = binding.root.resources.getDimensionPixelOffset(R.dimen.card_movie_radius)
+        val resources = binding.root.resources
         Glide.with(binding.root)
           .load(item.image)
-          .transform(RoundedCorners(radius))
+          .override(resources.getDimensionPixelOffset(R.dimen.card_wide_movie_width),
+                    resources.getDimensionPixelOffset(R.dimen.card_wide_movie_height))
+          .transform(CenterCrop(), RoundedCorners(resources.getDimensionPixelOffset(R.dimen.card_movie_radius)))
+          .transition(withCrossFade())
           .into(binding.imgViewPosterHor)
         binding.title = item.title
         binding.executePendingBindings() //for bags
+      }
+      onViewRecycled {
+        if ((binding.root.context as? Activity)?.isDestroyed?.not() == null)
+          Glide.with(binding.root).clear(binding.imgViewPosterHor)
       }
     }
 
   fun thinTopsMovieDelegate() =
-    adapterDelegateViewBinding<ItemTopsMovieThin, ListItem, ItemForHorizontalTopHideBinding>(
+    adapterDelegateViewBinding<ItemTopsMovieThin, ListItem, ItemForHorizontalTopThinBinding>(
       { layoutInflater, parent ->
-        ItemForHorizontalTopHideBinding.inflate(layoutInflater, parent, false)
+        ItemForHorizontalTopThinBinding.inflate(layoutInflater, parent, false)
       }
     ) {
       bind {
         println("Bind TopThinBinding")
-        val radius = binding.root.resources.getDimensionPixelOffset(R.dimen.card_movie_radius)
+        val resources = binding.root.resources
         Glide.with(binding.root)
           .load(item.image)
-          .transform(RoundedCorners(radius))
+          .override(resources.getDimensionPixelOffset(R.dimen.card_thin_movie_width),
+                    resources.getDimensionPixelOffset(R.dimen.card_thin_movie_height))
+          .transform(CenterCrop(), RoundedCorners(resources.getDimensionPixelOffset(R.dimen.card_movie_radius)))
+          .error(R.drawable.ic_poster_tmdb)
+          .transition(withCrossFade())
           .into(binding.imgViewPosterHor)
         binding.title = item.title
         binding.executePendingBindings() //for bags
+      }
+
+      onViewRecycled {
+        if ((binding.root.context as? Activity)?.isDestroyed?.not() == null)
+          Glide.with(binding.root).clear(binding.imgViewPosterHor)
       }
     }
 

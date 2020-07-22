@@ -1,4 +1,4 @@
-package com.quantumman.roomforwatch.helpers
+package com.quantumman.roomforwatch.util
 
 sealed class MovieState {
     object LoadingState : MovieState()

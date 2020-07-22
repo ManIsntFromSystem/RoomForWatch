@@ -9,5 +9,5 @@ data class PopularMovieApi(
   @SerializedName("popularity") val popularity: String,
   @SerializedName("vote_average") val voteAverage: Float,
   @SerializedName("release_date") val releaseDate: String,
-  @SerializedName("poster_path") val posterVertical: String,
-  @SerializedName("backdrop_path") val posterHorizontal: String) { }
+  @SerializedName("poster_path") val posterVertical: String?,
+  @SerializedName("backdrop_path") val posterHorizontal: String?) { }

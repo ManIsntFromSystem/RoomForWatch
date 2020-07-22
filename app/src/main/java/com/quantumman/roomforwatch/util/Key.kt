@@ -1,4 +1,4 @@
-package com.quantumman.roomforwatch.helpers
+package com.quantumman.roomforwatch.util
 
 enum class Key(var title: String) {
     Movie("MovieKey")

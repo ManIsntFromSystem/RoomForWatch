@@ -8,11 +8,27 @@ import retrofit2.http.Query
 import retrofit2.http.QueryMap
 
 interface AllMovieApi {
-  @GET("3/movie/{category}")
-  suspend fun fetchAllMovies(@Query("page") page: Int = 1,
-                             @Path("category") category: String,
-                             @Query("api_key") apiKey: String? = API_KEY,
-                             @Query("language") language: String? = "ru"): PagedResponse
+  @GET("3/movie/popular")
+  suspend fun fetchPopularMovies(@Query("page") page: Int = 1,
+                                 @Query("api_key") apiKey: String = API_KEY,
+                                 @Query("region") region: String = "RU",
+                                 @Query("language") language: String = "ru-Ru"): PagedResponse
+
+  @GET("3/movie/now_playing/")
+  suspend fun fetchNowPlayingMovies(@Query("page") page: Int = 1,
+                                    @Query("api_key") apiKey: String? = API_KEY,
+                                    @Query("language") language: String? = "ru"): PagedResponse
+
+  @GET("3/movie/upcoming")
+  suspend fun fetchUpcomingMovies(@Query("page") page: Int = 1,
+                                  @Query("api_key") apiKey: String? = API_KEY,
+                                  @Query("region") region: String = "RU",
+                                  @Query("language") language: String = "ru-Ru"): PagedResponse
+
+  @GET("3/movie/top_rated")
+  suspend fun fetchTopRatedMovies(@Query("page") page: Int = 1,
+                                  @Query("api_key") apiKey: String? = API_KEY,
+                                  @Query("language") language: String? = "ru"): PagedResponse
 
   @GET("movie/{movie_id}")
   fun getMovieReviews(@Path("movie_id") id: Int,

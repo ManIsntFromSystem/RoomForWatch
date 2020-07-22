@@ -1,12 +1,12 @@
-package com.quantumman.roomforwatch.vm
+package com.quantumman.roomforwatch.vm.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class UserViewModel : ViewModel() {
+class MapViewModel : ViewModel() {
     private val _text = MutableLiveData<String>().apply {
-        value = "This is user Fragment"
+        value = "This is map Fragment"
     }
     val text: LiveData<String> = _text
 }

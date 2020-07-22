@@ -1,4 +1,4 @@
-package com.quantumman.roomforwatch.helpers
+package com.quantumman.roomforwatch.util
 
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil

@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.quantumman.roomforwatch.R
-import com.quantumman.roomforwatch.vm.UserViewModel
+import com.quantumman.roomforwatch.vm.main.UserViewModel
 
 class UserFragment : Fragment() {
     private val userVM: UserViewModel by activityViewModels()

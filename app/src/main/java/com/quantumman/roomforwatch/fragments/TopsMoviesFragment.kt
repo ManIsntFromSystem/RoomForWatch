@@ -5,14 +5,11 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.quantumman.roomforwatch.R
 import com.quantumman.roomforwatch.adapters.TopPageAdapter
 import com.quantumman.roomforwatch.databinding.FragmentTopsBinding
-import com.quantumman.roomforwatch.model.base.ListItem
-import com.quantumman.roomforwatch.delegates.TopsPageDelegate
-import com.quantumman.roomforwatch.helpers.viewBinding
-import com.quantumman.roomforwatch.vm.TopsMoviesViewModel
+import com.quantumman.roomforwatch.util.viewBinding
+import com.quantumman.roomforwatch.vm.main.TopsMoviesViewModel
 
 class TopsMoviesFragment : Fragment(R.layout.fragment_tops) {
 

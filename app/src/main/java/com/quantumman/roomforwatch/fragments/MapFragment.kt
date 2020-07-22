@@ -1,6 +1,5 @@
 package com.quantumman.roomforwatch.fragments
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,7 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.quantumman.roomforwatch.R
-import com.quantumman.roomforwatch.vm.MapViewModel
+import com.quantumman.roomforwatch.vm.main.MapViewModel
 
 class MapFragment : Fragment() {
 

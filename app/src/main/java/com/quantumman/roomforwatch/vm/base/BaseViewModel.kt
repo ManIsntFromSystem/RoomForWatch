@@ -1,4 +1,4 @@
-package com.quantumman.roomforwatch.vm
+package com.quantumman.roomforwatch.vm.base
 
 import androidx.lifecycle.ViewModel
 

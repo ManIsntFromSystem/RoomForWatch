@@ -8,9 +8,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.quantumman.roomforwatch.R
-import com.quantumman.roomforwatch.vm.FavouritesMoviesViewModel
+import com.quantumman.roomforwatch.vm.main.FavouritesMoviesViewModel
 
 class FavouritesMoviesFragment : Fragment() {
     private val favouritesVM: FavouritesMoviesViewModel by activityViewModels()

@@ -47,6 +47,11 @@ dependencies {
   implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0"
   implementation 'com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.5.0'
 
+  //Dagger
+  def daggerVersion = '2.28.1'
+  api "com.google.dagger:dagger:$daggerVersion"
+  kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+
   // Room
   def room_version = "2.2.5"
   implementation "androidx.room:room-runtime:$room_version"
