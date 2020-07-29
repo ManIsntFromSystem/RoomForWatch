@@ -7,25 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_tops"
-        android:name="com.quantumman.roomforwatch.fragments.TopsMoviesFragment"
+        android:name="com.quantumman.roomforwatch.ui.main.TopsMoviesFragment"
         android:label="fragment_tops"
         tools:layout="@layout/fragment_tops"/>
 
     <fragment
-        android:id="@+id/navigation_map"
-        android:name="com.quantumman.roomforwatch.fragments.MapFragment"
-        android:label="fragment_map"
-        tools:layout="@layout/fragment_map"/>
-
-    <fragment
         android:id="@+id/navigation_favourites"
-        android:name="com.quantumman.roomforwatch.fragments.FavouritesMoviesFragment"
+        android:name="com.quantumman.roomforwatch.ui.fragments.FavouritesMoviesFragment"
         android:label="fragment_favourites"
         tools:layout="@layout/fragment_favourites"/>
 
     <fragment
         android:id="@+id/navigation_user"
-        android:name="com.quantumman.roomforwatch.fragments.UserFragment"
+        android:name="com.quantumman.roomforwatch.ui.fragments.UserFragment"
         android:label="fragment_user"
         tools:layout="@layout/fragment_user"/>
 

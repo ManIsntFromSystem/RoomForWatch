@@ -3,7 +3,6 @@ package com.quantumman.data.db.models
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.quantumman.data.db.contracts.RoomContract
-import com.quantumman.data.remote.model.Genres
 
 @Entity(tableName = RoomContract.tableMovie)
 data class MovieEntity(@PrimaryKey val id: Int,

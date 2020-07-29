@@ -9,6 +9,6 @@
     //category names
     <string name="category_now_playing">Now Playing</string>
     <string name="category_most_popular">The Most Popular</string>
-    <string name="category_latest">Latest</string>
+    <string name="category_upcoming">Upcoming</string>
     <string name="category_top_rated">Top Rated</string>
 </resources>

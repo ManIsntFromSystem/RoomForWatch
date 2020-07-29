@@ -48,7 +48,7 @@ dependencies {
   implementation 'com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.5.0'
 
   //Dagger
-  def daggerVersion = '2.28.1'
+  def daggerVersion = '2.28.3'
   api "com.google.dagger:dagger:$daggerVersion"
   kapt "com.google.dagger:dagger-compiler:$daggerVersion"
 

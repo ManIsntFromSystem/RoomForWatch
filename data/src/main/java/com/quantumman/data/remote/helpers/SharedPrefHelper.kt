@@ -2,7 +2,6 @@ package com.quantumman.data.remote.helpers
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.quantumman.data.remote.model.Genres
 
 
 object SharedPrefsHelper {

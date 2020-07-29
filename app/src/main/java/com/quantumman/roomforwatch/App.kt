@@ -1,7 +1,9 @@
 package com.quantumman.roomforwatch
 
 import android.app.Application
-import com.quantumman.roomforwatch.delegates.DaggerAppComponent
+import android.util.Log
+import com.quantumman.data.remote.helpers.DaggerNetworkComponent
+import com.quantumman.roomforwatch.di.DaggerAppComponent
 
 class App : Application() {
   override fun onCreate() {
@@ -10,8 +12,13 @@ class App : Application() {
   }
 
   private fun initDI() {
-    DI.appComponent = DaggerAppComponent.builder().appContext(this).build()
+    DI.appComponent = DaggerAppComponent.builder()
+      .appContext(this)
+      .build()
+
+    DI.networkComponent = DaggerNetworkComponent.create()
   }
+}
 
   //    companion object {
 //        lateinit var roomAppDatabase: RoomAppDatabase
@@ -21,4 +28,3 @@ class App : Application() {
 //        super.onCreate()
 //        roomAppDatabase = RoomAppDatabase.buildDataSource(context = applicationContext)
 //    }
-}

@@ -3,8 +3,11 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar.Bridge">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/appBlack</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="background">@color/appBlack</item>
+        <item name="backgroundTint">@color/appBlack</item>
+        <item name="backgroundColor">@color/appBlack</item>
     </style>
 
     <style name="AppBottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView.Colored">

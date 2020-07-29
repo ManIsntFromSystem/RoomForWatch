@@ -24,14 +24,17 @@ android {
     jvmTarget = JavaVersion.VERSION_1_8
   }
 
+  buildFeatures {
+    viewBinding = true
+    dataBinding = true
+  }
+
   buildTypes {
     release {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
   }
-  viewBinding.enabled = true
-  dataBinding.enabled = true
 }
 
 dependencies {
@@ -49,8 +52,6 @@ dependencies {
   implementation project(path: ':domain')
   implementation project(path: ':data')
 
-
-
   //Navigation
   def navigationVersion = '2.3.0'
   implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
@@ -58,17 +59,8 @@ dependencies {
   implementation "androidx.navigation:navigation-fragment:$navigationVersion"
   implementation "androidx.navigation:navigation-ui:$navigationVersion"
 
-  //Moxy
-  def moxyVersion = '2.1.2'
-  implementation "com.github.moxy-community:moxy:$moxyVersion"
-  implementation "com.github.moxy-community:moxy-android:$moxyVersion"
-  implementation "com.github.moxy-community:moxy-androidx:$moxyVersion"
-  implementation "com.github.moxy-community:moxy-material:$moxyVersion"
-  implementation "com.github.moxy-community:moxy-ktx:$moxyVersion"
-  kapt "com.github.moxy-community:moxy-compiler:$moxyVersion"
-
   //Dagger
-  def daggerVersion = '2.28.1'
+  def daggerVersion = '2.28.3'
   implementation "com.google.dagger:dagger:$daggerVersion"
   kapt "com.google.dagger:dagger-compiler:$daggerVersion"
 

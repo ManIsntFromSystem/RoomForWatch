@@ -9,10 +9,11 @@ import dagger.Component
 import dagger.Module
 import javax.inject.Singleton
 
-@Component(modules = [AppModule::class])
 @Singleton
+@Component(modules = [AppModule::class])
 interface AppComponent {
 
+  fun resources(): ResourceProvider
   @Component.Builder
   interface Builder {
     @BindsInstance

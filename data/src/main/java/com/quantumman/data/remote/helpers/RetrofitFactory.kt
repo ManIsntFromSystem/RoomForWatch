@@ -3,15 +3,14 @@ package com.quantumman.data.remote.helpers
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.quantumman.data.BuildConfig
-import com.quantumman.data.remote.model.base.Api.BASE_URL
-import com.quantumman.data.remote.services.MovieServices
+import com.quantumman.data.remote.api.Api.BASE_URL
+import com.quantumman.data.remote.services.MovieService
 import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitFactory {
   companion object {
@@ -34,6 +33,6 @@ class RetrofitFactory {
       .build()
 
     @UnstableDefault
-    fun getMoviesService(): MovieServices = getRetrofitInstance().create(MovieServices::class.java)
+    fun getMoviesService(): MovieService = getRetrofitInstance().create(MovieService::class.java)
   }
 }

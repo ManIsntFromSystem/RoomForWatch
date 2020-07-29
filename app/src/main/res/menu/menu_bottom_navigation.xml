@@ -8,12 +8,6 @@
         android:title="@string/nav_item_top"/>
 
     <item
-        android:id="@+id/bot_nav_maps"
-        android:enabled="true"
-        android:icon="@drawable/ic_baseline_map_24"
-        android:title="@string/nav_item_map"/>
-
-    <item
         android:id="@+id/bot_nav_favourites"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_favorite_24"

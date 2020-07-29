@@ -1,11 +1,8 @@
 package com.quantumman.data.db.models
 
-import android.content.Context
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.quantumman.data.db.contracts.RoomContract
-import com.quantumman.data.remote.helpers.SharedPrefsHelper
-import com.quantumman.data.remote.model.Genres
 
 
 @Entity(tableName = RoomContract.tablePopularMovies)
