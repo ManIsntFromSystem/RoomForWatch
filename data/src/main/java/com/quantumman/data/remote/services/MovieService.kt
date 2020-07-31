@@ -15,9 +15,6 @@ interface MovieService {
                                  @Query("api_key") apiKey: String = API_KEY,
                                  @Query("language") language: String = "ru-Ru"): BasePagedResponse
 
-  @GET("3/movie/popular")
-  suspend fun fetchPopularMovies1(@QueryMap params: Map<String, String>): BasePagedResponse
-
   @GET("3/movie/now_playing")
   suspend fun fetchNowPlayingMovies(@Query("page") page: Int = 1,
                                     @Query("region") region: String = "RU",
@@ -37,11 +34,11 @@ interface MovieService {
                                   @Query("language") language: String? = "ru-Ru"): BasePagedResponse
 
   @GET("movie/{movie_id}")
-  fun fetchMovieReview(@Path("movie_id") id: Int,
+  fun fetchMovieDescription(@Path("movie_id") id: Int,
                        @Query("api_key") apiKey: String? = API_KEY,
                        @Query("language") language: String? = "ru"): MovieDTO
 
-  @GET("movie/{movie_id}")
+  @GET("genre/movie/list")
   fun fetchGenres(@Query("api_key") apiKey: String? = API_KEY,
                   @Query("language") language: String? = "ru"): Genres
 

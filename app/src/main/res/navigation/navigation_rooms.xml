@@ -9,18 +9,36 @@
         android:id="@+id/navigation_tops"
         android:name="com.quantumman.roomforwatch.ui.main.TopsMoviesFragment"
         android:label="fragment_tops"
-        tools:layout="@layout/fragment_tops"/>
+        tools:layout="@layout/fragment_tops">
+        <action
+          android:id="@+id/action_navigation_tops_to_navigation_movie_desc"
+          app:destination="@id/navigation_movie_description" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_favourites"
         android:name="com.quantumman.roomforwatch.ui.fragments.FavouritesMoviesFragment"
         android:label="fragment_favourites"
-        tools:layout="@layout/fragment_favourites"/>
+        tools:layout="@layout/fragment_favourites">
+        <action
+          android:id="@+id/action_navigation_favourites_to_navigation_movie_desc"
+          app:destination="@id/navigation_movie_description" />
+    </fragment>
+
+    <fragment
+      android:id="@+id/navigation_movie_description"
+      android:name="com.quantumman.roomforwatch.ui.fragments.FavouritesMoviesFragment"
+      android:label="fragment_movie_description"
+      tools:layout="@layout/fragment_movie_description"/>
 
     <fragment
         android:id="@+id/navigation_user"
         android:name="com.quantumman.roomforwatch.ui.fragments.UserFragment"
         android:label="fragment_user"
-        tools:layout="@layout/fragment_user"/>
+        tools:layout="@layout/fragment_user">
+        <action
+          android:id="@+id/action_navigation_user_to_navigation_favourites"
+          app:destination="@id/navigation_favourites" />
+    </fragment>
 
 </navigation>

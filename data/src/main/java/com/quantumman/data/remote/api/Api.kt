@@ -1,7 +1,5 @@
 package com.quantumman.data.remote.api
 
-import retrofit2.http.Query
-
 object Api {
 
   const val API_KEY = "86b59aba7ad323dc9326d37105201143"

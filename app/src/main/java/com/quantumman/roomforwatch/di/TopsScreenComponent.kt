@@ -1,6 +1,7 @@
 package com.quantumman.roomforwatch.di
 
 import androidx.lifecycle.ViewModel
+import com.quantumman.data.db.dao.MovieDao
 import com.quantumman.data.remote.services.MovieService
 import com.quantumman.roomforwatch.DI
 import com.quantumman.roomforwatch.interactors.main.TopScreenInteractor
@@ -27,6 +28,9 @@ interface TopsScreenComponent {
     @BindsInstance
     fun api(service: MovieService): Builder
 
+    @BindsInstance
+    fun storage(movieDao: MovieDao): Builder
+
     fun build(): TopsScreenComponent
   }
 
@@ -35,6 +39,7 @@ interface TopsScreenComponent {
       DaggerTopsScreenComponent.builder()
         .resources(resources())
         .api(DI.networkComponent.api())
+        .storage(DI.storageComponent.movieDao())
         .build()
     }
   }

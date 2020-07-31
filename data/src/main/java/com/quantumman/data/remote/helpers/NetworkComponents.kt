@@ -25,17 +25,18 @@ abstract class NetworkModule {
   companion object {
     @Provides
     @Singleton
-    fun provideApi(): MovieService = Retrofit.Builder()
+    fun provideApi(okHttpClient: OkHttpClient): MovieService = Retrofit.Builder()
       .baseUrl(BASE_URL)
-      .client(getOkHttpInstance())
+      .client(okHttpClient)
       .addConverterFactory(GsonConverterFactory.create())
       .build()
       .create(MovieService::class.java)
 
-    private fun getOkHttpInstance(): OkHttpClient {
+    @Provides
+    @Singleton
+    fun getOkHttpInstance(): OkHttpClient {
       val logging = HttpLoggingInterceptor()
-      logging.level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY
-      else HttpLoggingInterceptor.Level.NONE
+      logging.level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
       return OkHttpClient.Builder()
         .addInterceptor(logging)
         .build()

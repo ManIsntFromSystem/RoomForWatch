@@ -1,16 +1,18 @@
 package com.quantumman.roomforwatch.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.arch.core.util.Function
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.quantumman.roomforwatch.R
 import com.quantumman.roomforwatch.ui.fragments.FavouritesMoviesFragment
-import com.quantumman.roomforwatch.ui.main.TopsMoviesFragment
 import com.quantumman.roomforwatch.ui.fragments.UserFragment
-import java.lang.ClassCastException
-
-const val TAG_MAIN = "Main Activity TAG: "
+import com.quantumman.roomforwatch.ui.main.TopsMoviesFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -50,8 +52,8 @@ class MainActivity : AppCompatActivity() {
     private fun loadFragments(fragment: Fragment) {
         supportFragmentManager.beginTransaction().also {
             println("loadFragments future from Main")
-            it.replace(R.id.fragment_container, fragment)
-            it.commitAllowingStateLoss()
+            it.replace(R.id.nav_host_fragment, fragment)
+            it.commit()
         }
     }
 

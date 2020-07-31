@@ -1,7 +1,7 @@
 package com.quantumman.roomforwatch
 
 import android.app.Application
-import android.util.Log
+import com.quantumman.data.db.DaggerStorageComponent
 import com.quantumman.data.remote.helpers.DaggerNetworkComponent
 import com.quantumman.roomforwatch.di.DaggerAppComponent
 
@@ -17,14 +17,9 @@ class App : Application() {
       .build()
 
     DI.networkComponent = DaggerNetworkComponent.create()
+
+    DI.storageComponent = DaggerStorageComponent.builder()
+      .appContext(this)
+      .build()
   }
 }
-
-  //    companion object {
-//        lateinit var roomAppDatabase: RoomAppDatabase
-//    }
-//
-//    override fun onCreate() {
-//        super.onCreate()
-//        roomAppDatabase = RoomAppDatabase.buildDataSource(context = applicationContext)
-//    }

@@ -5,9 +5,6 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/appBlack</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="background">@color/appBlack</item>
-        <item name="backgroundTint">@color/appBlack</item>
-        <item name="backgroundColor">@color/appBlack</item>
     </style>
 
     <style name="AppBottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
@@ -16,6 +13,6 @@
 
     <style name="ThemeOverlay.App.BottomNavigationView" parent="">
         <item name="colorPrimary">@color/appBlack</item>
-        <item name="colorOnPrimary">#FFF</item>
+        <item name="colorOnPrimary">#98A3AC</item>
     </style>
 </resources>

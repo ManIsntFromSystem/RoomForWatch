@@ -14,9 +14,8 @@
         android:layout_above="@+id/bottom_navigation"
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:defaultNavHost="true"
+        app:navGraph="@navigation/navigation_rooms"
         />
-    <!-- Dublicat TextView TopFragment on each screen because of this line -->
-<!--    app:navGraph="@navigation/navigation_rooms"-->
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

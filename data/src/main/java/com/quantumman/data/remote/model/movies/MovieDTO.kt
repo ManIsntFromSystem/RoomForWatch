@@ -9,12 +9,17 @@ import kotlinx.serialization.json.Json
 data class MovieDTO(
     @SerializedName("id") val id: Int,
     @SerializedName("title") val title: String,
-    @SerializedName("genre_ids") val genres: List<Int>,
+    @SerializedName("overview") val overview: String?,
     @SerializedName("popularity") val popularity: String,
-    @SerializedName("vote_average") val voteAverage: Float,
+    @SerializedName("genre_ids") val genres: List<Int>,
+    @SerializedName("budget") val budget: Int,
+    @SerializedName("revenue") val revenue: Int,
+    @SerializedName("runtime") val runtime: Int?,
+    @SerializedName("vote_count") val voteCount: Int,
+    @SerializedName("vote_average") val voteAverage: Double,
     @SerializedName("release_date") val releaseDate: String,
     @SerializedName("poster_path") val posterVertical: String?,
-    @SerializedName("backdrop_path") val posterHorizontal: String?
+    @SerializedName("backdrop_path") val posterBackHorizontal: String?
 ) {
     companion object {
         @UnstableDefault

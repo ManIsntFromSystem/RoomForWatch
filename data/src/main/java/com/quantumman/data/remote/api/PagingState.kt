@@ -1,4 +1,4 @@
-package com.quantumman.data.remote.api.params
+package com.quantumman.data.remote.api
 
 sealed class PagingState<out T> {
   object Initial : PagingState<Nothing>()

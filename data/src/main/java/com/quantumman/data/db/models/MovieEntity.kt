@@ -1,22 +1,21 @@
 package com.quantumman.data.db.models
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 import com.quantumman.data.db.contracts.RoomContract
+import com.quantumman.data.db.converters.GenresConverter
+import com.quantumman.data.remote.model.movies.Genres
 
 @Entity(tableName = RoomContract.tableMovie)
 data class MovieEntity(@PrimaryKey val id: Int,
                        val title: String,
-                       val originalTitle: String,
-                       val releaseDate: String,
-                       val popularity: Float,
-                       val poster: String,
-                       val genres: String,
+                       val posterVertical: String,
+                       val posterBackHorizontal: String,
+                       val genres: List<Int>,
+                       val overview: String,
+                       val popularity: Double,
                        val budget: Int,
                        val revenue: Int,
-                       val overview: String,
-                       val voteAverage: Float,
+                       val runtime: Int,
                        val voteCount: Int,
-                       val runtime: Int) {
-
-}
+                       val voteAverage: Double,
+                       val releaseDate: String)
