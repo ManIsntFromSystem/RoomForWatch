@@ -9,9 +9,12 @@ class TopMoviesHorizontalAdapter(onMakeTryToLoadMore: (Int) -> Unit) :
     BaseDiffUtilItemCallBack()
   ) {
   init {
-    delegatesManager.addDelegate(TopsPageDelegate.wideTopsMovieDelegate(onMakeTryToLoadMore))
-      .addDelegate(TopsPageDelegate.thinTopsMovieDelegate(onMakeTryToLoadMore))
-      .addDelegate(TopsPageDelegate.wideProgressDelegate())
+    setHasStableIds(true)
+    delegatesManager.addDelegate(TopsPageDelegate.thinTopsMovieDelegate(onMakeTryToLoadMore))
       .addDelegate(TopsPageDelegate.thinProgressDelegate())
+  }
+
+  override fun getItemId(position: Int): Long {
+    return items[position].itemId.toLong()
   }
 }

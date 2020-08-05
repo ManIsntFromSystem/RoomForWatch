@@ -1,25 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
-  android:id="@+id/fragment_tops"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+<data>
+  <variable
+    name="movie"
+    type="com.quantumman.roomforwatch.model.movies.description.DescriptionMovie" />
+</data>
+  <LinearLayout
+  android:id="@+id/fragment_movie_description"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:orientation="vertical"
-  tools:context=".ui.MainActivity">
+  tools:context=".ui.fragments.MovieDescriptionFragment">
 
   <ImageView
     android:id="@+id/ivBackgroundPoster"
     android:layout_width="match_parent"
-    android:layout_height="180dp"
-    tools:background="@color/colorPrimary"/>
+    android:layout_height="220dp"
+    tools:background="@color/colorPrimary"
+    tools:ignore="ContentDescription"
+    app:imageUrl="@{movie.image}"/>
 
   <TextView
     android:id="@+id/tvTitleMovieDesc"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Name"
+    android:text="@{movie.title}"
     android:textSize="26sp"/>
 
-
+  <TextView
+    android:id="@+id/tvDescMovieDesc"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@{movie.overview}"
+    android:textSize="26sp"/>
 </LinearLayout>
+</layout>

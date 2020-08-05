@@ -10,8 +10,8 @@ data class MovieDTO(
     @SerializedName("id") val id: Int,
     @SerializedName("title") val title: String,
     @SerializedName("overview") val overview: String?,
-    @SerializedName("popularity") val popularity: String,
-    @SerializedName("genre_ids") val genres: List<Int>,
+    @SerializedName("popularity") val popularity: Double,
+//    @SerializedName("genre_ids") val genres: List<Genres>,
     @SerializedName("budget") val budget: Int,
     @SerializedName("revenue") val revenue: Int,
     @SerializedName("runtime") val runtime: Int?,
@@ -33,3 +33,12 @@ data class MovieDTO(
 fun MovieDTO.toJson(): String {
     return Json.stringify(MovieDTO.serializer(), this)
 }
+
+data class MovieDetailedDTO(
+    @SerializedName("id") val id: Int,
+    @SerializedName("title") val title: String,
+    @SerializedName("overview") val overview: String?,
+    @SerializedName("backdrop_path") val posterBackHorizontal: String?
+)
+
+

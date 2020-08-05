@@ -13,7 +13,6 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Database(entities = [MovieEntity::class], version = 1)
-@TypeConverters(GenresConverter::class)
 abstract class RoomAppDatabase : RoomDatabase() {
 
   abstract fun movieDao(): MovieDao

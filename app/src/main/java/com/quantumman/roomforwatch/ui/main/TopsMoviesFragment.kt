@@ -30,7 +30,6 @@ class TopsMoviesFragment : Fragment(R.layout.fragment_tops) {
     with(binding) {
       recyclerTopPage.adapter = adapter
       viewModel.data.observe(viewLifecycleOwner, Observer {
-        println("TopsMoviesFragment Observe")
         adapter.items = it
       })
     }

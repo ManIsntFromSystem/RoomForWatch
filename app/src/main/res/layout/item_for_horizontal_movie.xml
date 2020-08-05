@@ -3,7 +3,6 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools">
-
   <data>
     <variable
       name="title"
@@ -17,8 +16,8 @@
 
     <ImageView
       android:id="@+id/imgViewPosterHor"
-      android:layout_width="@dimen/card_wide_movie_width"
-      android:layout_height="@dimen/card_wide_movie_height"
+      android:layout_width="@dimen/card_thin_movie_width"
+      android:layout_height="@dimen/card_thin_movie_height"
       android:layout_alignParentTop="true"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
@@ -30,12 +29,12 @@
       android:id="@+id/tvTitleMovieName"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
       android:lines="1"
       android:ellipsize="end"
-      android:paddingBottom="4dp"
-      android:layout_marginTop="8dp"
-      android:text="@{title}"
       android:textSize="16sp"
+      android:text="@{title}"
+      android:paddingBottom="4dp"
       android:fontFamily="sans-serif-light"
       android:textColor="@color/titleTextMovieName"
       app:layout_constraintEnd_toEndOf="parent"

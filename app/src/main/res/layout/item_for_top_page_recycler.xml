@@ -34,5 +34,5 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/tvTitleCategory"
-    tools:listitem="@layout/item_for_horizontal_top_wide" />
+    tools:listitem="@layout/item_for_horizontal_movie" />
 </androidx.constraintlayout.widget.ConstraintLayout>

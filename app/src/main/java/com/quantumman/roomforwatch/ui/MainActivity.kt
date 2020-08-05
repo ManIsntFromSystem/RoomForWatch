@@ -1,68 +1,65 @@
 package com.quantumman.roomforwatch.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.arch.core.util.Function
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
+import androidx.navigation.NavController
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.quantumman.roomforwatch.R
-import com.quantumman.roomforwatch.ui.fragments.FavouritesMoviesFragment
-import com.quantumman.roomforwatch.ui.fragments.UserFragment
-import com.quantumman.roomforwatch.ui.main.TopsMoviesFragment
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var botNavView: BottomNavigationView
+  private lateinit var navController: NavController
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
+    if (savedInstanceState == null)
+      startNavigation()
+  }
 
-        botNavView = findViewById(R.id.bottom_navigation)
+  override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+    super.onRestoreInstanceState(savedInstanceState)
+    startNavigation()
+  }
 
-        if (savedInstanceState == null)
-            loadFragments(TopsMoviesFragment())
-        initNavigation()
-    }
+  override fun onSupportNavigateUp() = NavigationUI.navigateUp(navController, null)
 
-    private fun initNavigation() {
-        botNavView.setOnNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.bot_nav_tops -> {
-                    loadFragments(TopsMoviesFragment())
-                    return@setOnNavigationItemSelectedListener true
-                }
-                R.id.bot_nav_favourites -> {
-                    loadFragments(FavouritesMoviesFragment())
-                    return@setOnNavigationItemSelectedListener true
-                }
-                R.id.bot_nav_user -> {
-                    loadFragments(UserFragment())
-                    return@setOnNavigationItemSelectedListener true
-                }
-                else -> throw ClassCastException ("Unknown class")
-            }
-        }
-    }
-
-    private fun loadFragments(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().also {
-            println("loadFragments future from Main")
-            it.replace(R.id.nav_host_fragment, fragment)
-            it.commit()
-        }
-    }
-
-//    override fun onSupportNavigateUp(): Boolean {
-//        return findNavController(this@MainActivity, R.id.nav_host_fragment).navigateUp()
-//    }
-//
-//    private fun startNavigation() {
-//        val navControl = findNavController(this@MainActivity, R.id.nav_host_fragment)
-//        botNavView.setupWithNavController(navController = navControl)
-//    }
+  private fun startNavigation() {
+      val botNavView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+      navController = findNavController(this, R.id.nav_host_fragment)
+      botNavView.setupWithNavController(navController)
+  }
 }
+
+//old method
+/**
+ *     private fun initNavigation() {
+botNavView.setOnNavigationItemSelectedListener {
+when (it.itemId) {
+R.id.bot_nav_tops -> {
+loadFragments(TopsMoviesFragment())
+return@setOnNavigationItemSelectedListener true
+}
+R.id.bot_nav_favourites -> {
+loadFragments(FavouritesMoviesFragment())
+return@setOnNavigationItemSelectedListener true
+}
+R.id.bot_nav_user -> {
+loadFragments(UserFragment())
+return@setOnNavigationItemSelectedListener true
+}
+else -> throw ClassCastException ("Unknown class")
+}
+}
+}
+
+private fun loadFragments(fragment: Fragment) {
+supportFragmentManager.beginTransaction().also {
+it.replace(R.id.nav_host_fragment, fragment)
+it.commit()
+}
+}
+ */

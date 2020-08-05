@@ -1,4 +1,4 @@
-package com.quantumman.roomforwatch.model.movies
+package com.quantumman.roomforwatch.model.movies.topscreen
 
 import com.quantumman.roomforwatch.model.base.ListItem
 

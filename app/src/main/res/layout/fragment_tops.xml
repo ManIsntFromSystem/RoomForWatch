@@ -5,7 +5,7 @@
   android:id="@+id/fragment_tops"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".ui.MainActivity">
+  tools:context=".ui.main.TopsMoviesFragment">
 
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/recyclerTopPage"
@@ -15,6 +15,6 @@
     android:scrollbars="vertical"
     android:orientation="vertical"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-    tools:listitem="@layout/item_for_top_recycler"/>
+    tools:listitem="@layout/item_for_top_page_recycler"/>
 
 </RelativeLayout>

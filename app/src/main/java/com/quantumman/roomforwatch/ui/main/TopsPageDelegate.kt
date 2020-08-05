@@ -1,6 +1,7 @@
 package com.quantumman.roomforwatch.ui.main
 
 import android.app.Activity
+import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -8,28 +9,23 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withC
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import com.quantumman.data.remote.model.movies.CategoryType
 import com.quantumman.roomforwatch.R
-import com.quantumman.roomforwatch.ui.main.TopMoviesHorizontalAdapter
 import com.quantumman.roomforwatch.databinding.*
 import com.quantumman.roomforwatch.model.base.ListItem
-import com.quantumman.roomforwatch.model.movies.*
+import com.quantumman.roomforwatch.model.movies.topscreen.ItemTopsMovieThin
+import com.quantumman.roomforwatch.model.movies.topscreen.ProgressThinItem
+import com.quantumman.roomforwatch.model.movies.topscreen.TopsMoviesHorizontalItem
 
 object TopsPageDelegate {
 
   fun moviesHorizontalDelegate(onItemBind: (TopsMoviesHorizontalItem) -> Unit,
                                onMakeTryToLoadMore: (CategoryType, Int) -> Unit) =
-    adapterDelegateViewBinding<TopsMoviesHorizontalItem, ListItem, ItemForTopRecyclerBinding>(
+    adapterDelegateViewBinding<TopsMoviesHorizontalItem, ListItem, ItemForTopPageRecyclerBinding>(
       { layoutInflater, parent ->
-        ItemForTopRecyclerBinding.inflate(layoutInflater, parent, false)
+        ItemForTopPageRecyclerBinding.inflate(layoutInflater, parent, false)
       }
     ) {
       //OnCreateViewHolder
-      val adapter =
-        TopMoviesHorizontalAdapter { pos ->
-          onMakeTryToLoadMore.invoke(
-            item.category,
-            pos
-          )
-        }
+      val adapter = TopMoviesHorizontalAdapter { onMakeTryToLoadMore.invoke(item.category, adapterPosition) }
       binding.recyclerItemTopPage.adapter = adapter
       //OnBindViewHolder
       bind {
@@ -39,40 +35,16 @@ object TopsPageDelegate {
       }
     }
 
-  fun wideTopsMovieDelegate(onMakeTryToLoadMore: (Int) -> Unit) =
-    adapterDelegateViewBinding<ItemTopsMovieWide, ListItem, ItemForHorizontalTopWideBinding>(
-      { layoutInflater, parent ->
-        ItemForHorizontalTopWideBinding.inflate(layoutInflater, parent, false)
-      }
-    ) {
-
-      bind {
-        val resources = binding.root.resources
-        Glide.with(binding.root)
-          .load(item.image)
-          .override(resources.getDimensionPixelOffset(R.dimen.card_wide_movie_width),
-                    resources.getDimensionPixelOffset(R.dimen.card_wide_movie_height))
-          .transform(CenterCrop(), RoundedCorners(resources.getDimensionPixelOffset(R.dimen.card_movie_radius)))
-          .error(R.drawable.ic_poster_tmdb)
-          .transition(withCrossFade())
-          .into(binding.imgViewPosterHor)
-        binding.title = item.title
-        binding.executePendingBindings() //for bags
-        onMakeTryToLoadMore.invoke(adapterPosition)
-      }
-      //onViewRecycled | here, we can write some code to free up some resources
-      onViewRecycled {
-        if ((binding.root.context as? Activity)?.isDestroyed?.not() == null)
-          Glide.with(binding.root).clear(binding.imgViewPosterHor)
-      }
-    }
-
   fun thinTopsMovieDelegate(onMakeTryToLoadMore: (Int) -> Unit) =
-    adapterDelegateViewBinding<ItemTopsMovieThin, ListItem, ItemForHorizontalTopThinBinding>(
+    adapterDelegateViewBinding<ItemTopsMovieThin, ListItem, ItemForHorizontalMovieBinding>(
       { layoutInflater, parent ->
-        ItemForHorizontalTopThinBinding.inflate(layoutInflater, parent, false)
+        ItemForHorizontalMovieBinding.inflate(layoutInflater, parent, false)
       }
     ) {
+      binding.imgViewPosterHor.setOnClickListener {
+        val action = TopsMoviesFragmentDirections.navigateToMovieDescFragment(item.id)
+        Navigation.findNavController(binding.root).navigate(action)
+      }
       bind {
         val resources = binding.root.resources
         Glide.with(binding.root)
@@ -94,15 +66,9 @@ object TopsPageDelegate {
       }
     }
 
-  fun wideProgressDelegate() =
-    adapterDelegateViewBinding<ProgressWideItem, ListItem, ItemWideProgressBinding>(
-      { layoutInflater, parent ->
-        ItemWideProgressBinding.inflate(layoutInflater, parent, false)
-      }) {}
-
   fun thinProgressDelegate() =
-    adapterDelegateViewBinding<ProgressThinItem, ListItem, ItemThinProgressBinding>(
+    adapterDelegateViewBinding<ProgressThinItem, ListItem, ItemMovieProgressBinding>(
       { layoutInflater, parent ->
-        ItemThinProgressBinding.inflate(layoutInflater, parent, false)
+        ItemMovieProgressBinding.inflate(layoutInflater, parent, false)
       }) {}
 }

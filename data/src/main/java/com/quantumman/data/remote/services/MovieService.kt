@@ -3,9 +3,8 @@ package com.quantumman.data.remote.services
 import com.quantumman.data.remote.api.Api.API_KEY
 import com.quantumman.data.remote.model.movies.MovieDTO
 import com.quantumman.data.remote.model.base.BasePagedResponse
-import com.quantumman.data.remote.model.movies.Dates
 import com.quantumman.data.remote.model.movies.Genres
-import kotlinx.coroutines.Deferred
+import com.quantumman.data.remote.model.movies.MovieDetailedDTO
 import retrofit2.http.*
 
 interface MovieService {
@@ -33,17 +32,12 @@ interface MovieService {
                                   @Query("api_key") apiKey: String? = API_KEY,
                                   @Query("language") language: String? = "ru-Ru"): BasePagedResponse
 
-  @GET("movie/{movie_id}")
-  fun fetchMovieDescription(@Path("movie_id") id: Int,
-                       @Query("api_key") apiKey: String? = API_KEY,
-                       @Query("language") language: String? = "ru"): MovieDTO
+  @GET("3/movie/{movie_id}")
+  suspend fun fetchMovieDescription(@Path("movie_id") id: Int,
+                            @Query("api_key") apiKey: String? = API_KEY,
+                            @Query("language") language: String? = "ru-Ru"): MovieDetailedDTO
 
-  @GET("genre/movie/list")
-  fun fetchGenres(@Query("api_key") apiKey: String? = API_KEY,
-                  @Query("language") language: String? = "ru"): Genres
-
-
-  @GET("/movie/popular")
-  fun getOtherPopularMoviesAsync(): Deferred<List<MovieDTO>>
-
+  @GET("3/genre/movie/list")
+  suspend fun fetchMovieGenres(@Query("api_key") apiKey: String? = API_KEY,
+                       @Query("language") language: String? = "ru"): Genres
 }

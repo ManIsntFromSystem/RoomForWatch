@@ -9,6 +9,8 @@ open class BaseDiffUtilItemCallBack : DiffUtil.ItemCallback<ListItem>() {
     return oldItem.itemId == newItem.itemId
   }
 
+
+
   @SuppressLint("DiffUtilEquals")
   override fun areContentsTheSame(oldItem: ListItem, newItem: ListItem): Boolean {
     return oldItem == newItem

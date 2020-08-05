@@ -1,12 +1,12 @@
-package com.quantumman.roomforwatch.vm.main
+package com.quantumman.roomforwatch.vm.favourites
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class UserViewModel : ViewModel() {
+class FavouritesMoviesViewModel : ViewModel() {
     private val _text = MutableLiveData<String>().apply {
-        value = "This is user Fragment"
+        value = "This is favourites Fragment"
     }
     val text: LiveData<String> = _text
 }

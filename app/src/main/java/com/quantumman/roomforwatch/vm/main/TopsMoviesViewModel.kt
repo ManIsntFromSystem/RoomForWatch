@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.quantumman.data.remote.model.movies.CategoryType
 import com.quantumman.roomforwatch.interactors.main.TopScreenInteractor
 import com.quantumman.roomforwatch.model.base.ListItem
-import com.quantumman.roomforwatch.model.movies.TopsMoviesHorizontalItem
+import com.quantumman.roomforwatch.model.movies.topscreen.TopsMoviesHorizontalItem
 import com.quantumman.roomforwatch.vm.BaseViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -37,6 +37,13 @@ class TopsMoviesViewModel @Inject constructor(
       interactor.tryToLoadMore(category, index)
     }
   }
+
+//  fun intoMovieDescription(movieId: Int) {
+//    println("MovieId Listener: $movieId")
+//    val action = TopsMoviesFragmentDirections.navigateToMovieDescFragment(movieId)
+//
+//    Navigation.findNavController(R.layout.fragment_tops).navigate(action)
+//  }
 }
 
 //  private val state: MutableLiveData<MovieState> =

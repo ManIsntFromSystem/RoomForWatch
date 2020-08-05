@@ -1,14 +1,19 @@
 <resources>
-    <string name="app_name">Room For Watch</string>
-    <string name="nav_item_top">Top</string>
-    <string name="nav_item_map">Map</string>
-    <string name="nav_item_favourites">Favourites</string>
-    <string name="nav_item_my_room">My Room</string>
-    <string name="text_title_category">Most Popular</string>
+  <string name="app_name">Room For Watch</string>
+  <string name="nav_item_top">Top</string>
+  <string name="nav_item_map">Map</string>
+  <string name="nav_item_favourites">Favourites</string>
+  <string name="nav_item_my_room">My Room</string>
+  <string name="text_title_category">Most Popular</string>
 
-    //category names
-    <string name="category_now_playing">Now Playing</string>
-    <string name="category_most_popular">The Most Popular</string>
-    <string name="category_upcoming">Upcoming</string>
-    <string name="category_top_rated">Top Rated</string>
+  //category names
+  <string name="category_now_playing">Now Playing</string>
+  <string name="category_most_popular">The Most Popular</string>
+  <string name="category_upcoming">Upcoming</string>
+  <string name="category_top_rated">Top Rated</string>
+
+  //Default movie
+  <string name="description_movie_title">Movie</string>
+  <!-- TODO: Remove or change this placeholder text -->
+  <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
