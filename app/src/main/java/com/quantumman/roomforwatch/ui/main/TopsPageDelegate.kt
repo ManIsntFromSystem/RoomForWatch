@@ -1,7 +1,6 @@
 package com.quantumman.roomforwatch.ui.main
 
 import android.app.Activity
-import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -9,7 +8,9 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withC
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import com.quantumman.data.remote.model.movies.CategoryType
 import com.quantumman.roomforwatch.R
-import com.quantumman.roomforwatch.databinding.*
+import com.quantumman.roomforwatch.databinding.ItemForHorizontalMovieBinding
+import com.quantumman.roomforwatch.databinding.ItemForTopPageRecyclerBinding
+import com.quantumman.roomforwatch.databinding.ItemMovieProgressBinding
 import com.quantumman.roomforwatch.model.base.ListItem
 import com.quantumman.roomforwatch.model.movies.topscreen.ItemTopsMovieThin
 import com.quantumman.roomforwatch.model.movies.topscreen.ProgressThinItem
@@ -18,6 +19,7 @@ import com.quantumman.roomforwatch.model.movies.topscreen.TopsMoviesHorizontalIt
 object TopsPageDelegate {
 
   fun moviesHorizontalDelegate(onItemBind: (TopsMoviesHorizontalItem) -> Unit,
+                               onMovieClickListener: (Int) -> Unit,
                                onMakeTryToLoadMore: (CategoryType, Int) -> Unit) =
     adapterDelegateViewBinding<TopsMoviesHorizontalItem, ListItem, ItemForTopPageRecyclerBinding>(
       { layoutInflater, parent ->
@@ -25,7 +27,11 @@ object TopsPageDelegate {
       }
     ) {
       //OnCreateViewHolder
-      val adapter = TopMoviesHorizontalAdapter { onMakeTryToLoadMore.invoke(item.category, adapterPosition) }
+      val adapter = TopMoviesHorizontalAdapter(
+        { movie -> onMovieClickListener.invoke(movie) },
+        { pos -> onMakeTryToLoadMore.invoke(item.category, pos) }
+      )
+
       binding.recyclerItemTopPage.adapter = adapter
       //OnBindViewHolder
       bind {
@@ -35,17 +41,14 @@ object TopsPageDelegate {
       }
     }
 
-  fun thinTopsMovieDelegate(onMakeTryToLoadMore: (Int) -> Unit) =
+  fun thinTopsMovieDelegate(onMovieClickListener: (Int) -> Unit, onMakeTryToLoadMore: (Int) -> Unit) =
     adapterDelegateViewBinding<ItemTopsMovieThin, ListItem, ItemForHorizontalMovieBinding>(
       { layoutInflater, parent ->
         ItemForHorizontalMovieBinding.inflate(layoutInflater, parent, false)
       }
     ) {
-      binding.imgViewPosterHor.setOnClickListener {
-        val action = TopsMoviesFragmentDirections.navigateToMovieDescFragment(item.id)
-        Navigation.findNavController(binding.root).navigate(action)
-      }
-      bind {
+      binding.imgViewPosterHor.setOnClickListener { onMovieClickListener.invoke(item.id) }
+        bind {
         val resources = binding.root.resources
         Glide.with(binding.root)
           .load(item.image)

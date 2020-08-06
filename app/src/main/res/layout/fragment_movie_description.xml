@@ -1,39 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
-  xmlns:app="http://schemas.android.com/apk/res-auto">
-<data>
-  <variable
-    name="movie"
-    type="com.quantumman.roomforwatch.model.movies.description.DescriptionMovie" />
-</data>
-  <LinearLayout
-  android:id="@+id/fragment_movie_description"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:orientation="vertical"
-  tools:context=".ui.fragments.MovieDescriptionFragment">
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
 
-  <ImageView
-    android:id="@+id/ivBackgroundPoster"
+  <data>
+
+    <variable
+      name="movie"
+      type="com.quantumman.roomforwatch.model.movies.description.DescriptionMovie" />
+
+   </data>
+
+  <ScrollView
+    android:background="@color/appBlack"
     android:layout_width="match_parent"
-    android:layout_height="220dp"
-    tools:background="@color/colorPrimary"
-    tools:ignore="ContentDescription"
-    app:imageUrl="@{movie.image}"/>
+    android:layout_height="match_parent">
 
-  <TextView
-    android:id="@+id/tvTitleMovieDesc"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@{movie.title}"
-    android:textSize="26sp"/>
+    <LinearLayout
+      android:id="@+id/fragment_movie_description"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      tools:context=".ui.fragments.MovieDescriptionFragment">
 
-  <TextView
-    android:id="@+id/tvDescMovieDesc"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@{movie.overview}"
-    android:textSize="26sp"/>
-</LinearLayout>
+      <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+          android:id="@+id/ivBackgroundPoster"
+          android:layout_width="match_parent"
+          android:layout_height="220dp"
+          app:imageUrl="@{movie.image}"
+          tools:background="@color/colorPrimary"
+          tools:ignore="ContentDescription" />
+
+        <ImageView
+          android:id="@+id/ivBtnBackToTopPage"
+          android:layout_width="48dp"
+          android:layout_height="48dp"
+          android:clickable="true"
+          android:src="@drawable/ic_baseline_arrow_back_48"
+          android:focusable="true" />
+
+      </androidx.cardview.widget.CardView>
+
+      <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+          android:id="@+id/tvTitleMovieDesc"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="8dp"
+          android:layout_marginEnd="6dp"
+          android:fontFamily="sans-serif-black"
+          android:textColor="@color/appWhite"
+          android:text="@{movie.title}"
+          android:textSize="22sp"
+          android:textStyle="bold" />
+
+        <View
+          android:id="@+id/layoutForGenres"
+          android:layout_width="wrap_content"
+          android:layout_height="48dp"
+          android:layout_below="@+id/tvTitleMovieDesc">
+
+        </View>
+
+        <TextView
+          android:id="@+id/tvDescMovieDesc"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/layoutForGenres"
+          android:layout_marginStart="8dp"
+          android:layout_marginEnd="6dp"
+          android:fontFamily="sans-serif-light"
+          android:textColor="@color/appWhite"
+          android:text="@{movie.overview}"
+          android:textSize="16sp"
+          android:textStyle="italic" />
+
+      </RelativeLayout>
+
+    </LinearLayout>
+  </ScrollView>
+
 </layout>

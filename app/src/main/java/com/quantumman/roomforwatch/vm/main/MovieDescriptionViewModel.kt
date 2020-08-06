@@ -1,11 +1,13 @@
 package com.quantumman.roomforwatch.vm.main
 
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.Navigation.findNavController
+import com.quantumman.roomforwatch.R
 import com.quantumman.roomforwatch.interactors.detals.DescMovieScreenInteractor
 import com.quantumman.roomforwatch.model.base.DescriptionItem
-import com.quantumman.roomforwatch.model.base.ListItem
 import com.quantumman.roomforwatch.vm.BaseViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -28,5 +30,9 @@ class MovieDescriptionViewModel  @Inject constructor(
     viewModelScope.launch (Dispatchers.IO){
       interactor.getMovieById(movieId)
     }
+  }
+
+  fun goBackToTopPage(view: View) {
+    findNavController(view).popBackStack(R.id.fragment_tops, false)
   }
 }

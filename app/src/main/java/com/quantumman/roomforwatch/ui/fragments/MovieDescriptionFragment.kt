@@ -2,14 +2,12 @@ package com.quantumman.roomforwatch.ui.fragments
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.quantumman.roomforwatch.R
 import com.quantumman.roomforwatch.databinding.FragmentMovieDescriptionBinding
 import com.quantumman.roomforwatch.di.TopsScreenComponent
@@ -35,6 +33,32 @@ class MovieDescriptionFragment : Fragment(R.layout.fragment_movie_description) {
         }
       })
     }
+
+    val callback: OnBackPressedCallback =
+      object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+          findNavController().popBackStack(R.id.fragment_tops, true)
+        }
+      }
+
+    requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+
+    binding.ivBtnBackToTopPage.setOnClickListener {
+      findNavController().popBackStack(R.id.fragment_tops, false)
+    }
   }
 }
+
+//    val navController = Navigation.findNavController(view)
+//    requireActivity().onBackPressedDispatcher.addCallback(this) {
+//      navController.popBackStack(R.id.backFromDescriptionToTopPage, false)
+//    }
+
+//  fun onBackPressed() {
+//    onReturnToPreviousScreen()
+//  }
+//
+//  private fun onReturnToPreviousScreen() {
+//    findNavController().popBackStack()
+//  }
 
