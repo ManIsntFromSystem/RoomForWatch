@@ -29,13 +29,14 @@ class TopsMoviesFragment : Fragment(R.layout.fragment_tops) {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    Log.d("MyTag","OnViewCreateTopPage")
-    with(binding) {
-      recyclerTopPage.adapter = adapter
-      viewModel.data.observe(viewLifecycleOwner, Observer {
-        adapter.items = it
-      })
-    }
+    Log.d("MyTag", "StartOnViewCreateTopPage")
+    binding.recyclerTopPage.adapter = adapter
+    viewModel.data.observe(viewLifecycleOwner, Observer {
+      adapter.items.forEach { it1 -> Log.d("MyTag", "Adapter items2 $it1") }
+      adapter.items = it
+      adapter.items.forEach { it1 -> Log.d("MyTag", "Adapter items3 $it1") }
+    })
+    Log.d("MyTag", "AfterOnViewCreateTopPage")
   }
 
   private fun goToMovieDescription(movie: Int) {
@@ -45,11 +46,38 @@ class TopsMoviesFragment : Fragment(R.layout.fragment_tops) {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    Log.d("MyTag","OnCreateTopPage")
+    Log.d("MyTag", "OnCreateTopPage")
   }
 
   override fun onDestroyView() {
     super.onDestroyView()
-    adapter.items = null
+    Log.d("MyTag", "OnDestroyViewTopPage")
+    Log.d("MyTag", "Adapter items ${adapter.items}")
+    adapter.items.forEach { Log.d("MyTag", "Adapter items1 $it") }
+  }
+
+  override fun onDestroy() {
+    super.onDestroy()
+    Log.d("MyTag", "OnDestroyTopPage")
+  }
+
+  override fun onPause() {
+    super.onPause()
+    Log.d("MyTag", "OnPauseTopPage")
+  }
+
+  override fun onStop() {
+    super.onStop()
+    Log.d("MyTag", "OnStopTopPage")
+  }
+
+  override fun onStart() {
+    super.onStart()
+    Log.d("MyTag", "OnStartTopPage")
+  }
+
+  override fun onResume() {
+    super.onResume()
+    Log.d("MyTag", "OnResumeTopPage")
   }
 }

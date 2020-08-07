@@ -13,12 +13,8 @@
     <action
       android:id="@+id/navigateToMovieDescFragment"
       app:destination="@id/navigationMovieDescription"
-      app:enterAnim="@anim/fragment_close_enter"
-      app:exitAnim="@anim/fragment_close_exit"
       app:popUpTo="@id/navigationTops"
-      app:popUpToInclusive="false"
-      app:popEnterAnim="@anim/fragment_fade_enter"
-      app:popExitAnim="@anim/fragment_fade_exit" />
+      app:popUpToInclusive="true" />
   </fragment>
 
   <fragment
@@ -33,12 +29,15 @@
 
   <fragment
     android:id="@+id/navigationMovieDescription"
-    android:name="com.quantumman.roomforwatch.ui.fragments.MovieDescriptionFragment"
+    android:name="com.quantumman.roomforwatch.ui.description.MovieDescriptionFragment"
     android:label="Movie"
     tools:layout="@layout/fragment_movie_description">
     <argument
       android:name="movieId"
       app:argType="integer" />
+    <action
+      android:id="@+id/actionBackToTopPageFromDesc"
+      app:destination="@id/navigationTops" />
   </fragment>
 
 

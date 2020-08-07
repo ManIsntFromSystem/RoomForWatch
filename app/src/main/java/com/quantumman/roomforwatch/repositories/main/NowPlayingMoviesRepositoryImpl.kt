@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class NowPlayingMoviesRepositoryImpl @Inject constructor(
+class NowPlayingMoviesRepositoryImpl @Inject  constructor(
   private val dataSource: MoviesRemoteDataSource,
   private val resource: ResourceProvider
 ) : MovieCategoryRepository {

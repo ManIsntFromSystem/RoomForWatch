@@ -9,11 +9,10 @@ object UIUtil {
   @JvmStatic
   @BindingAdapter(value = ["imageUrl"], requireAll = false)
   fun loadPosterUrl(view: ImageView, imageUrl: String?) {
-    if(!imageUrl.isNullOrEmpty())
     Glide.with(view.context)
       .load(imageUrl)
-      .centerCrop()
       .error(R.drawable.ic_poster_tmdb)
+      .centerCrop()
       .into(view)
   }
 }

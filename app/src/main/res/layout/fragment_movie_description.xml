@@ -4,7 +4,6 @@
   xmlns:tools="http://schemas.android.com/tools">
 
   <data>
-
     <variable
       name="movie"
       type="com.quantumman.roomforwatch.model.movies.description.DescriptionMovie" />
@@ -21,7 +20,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="vertical"
-      tools:context=".ui.fragments.MovieDescriptionFragment">
+      tools:context=".ui.description.MovieDescriptionFragment">
 
       <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -41,7 +40,8 @@
           android:layout_height="48dp"
           android:clickable="true"
           android:src="@drawable/ic_baseline_arrow_back_48"
-          android:focusable="true" />
+          android:focusable="true"
+          tools:ignore="ContentDescription" />
 
       </androidx.cardview.widget.CardView>
 

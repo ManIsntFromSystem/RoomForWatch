@@ -5,10 +5,9 @@ import com.quantumman.roomforwatch.model.base.ListItem
 import com.quantumman.roomforwatch.util.BaseDiffUtilItemCallBack
 
 class TopMoviesHorizontalAdapter(onMovieClickListener: (Int) -> Unit, onMakeTryToLoadMore: (Int) -> Unit) :
-  AsyncListDifferDelegationAdapter<ListItem>(
-    BaseDiffUtilItemCallBack()
-  ) {
+  AsyncListDifferDelegationAdapter<ListItem>(BaseDiffUtilItemCallBack()) {
   init {
+    notifyDataSetChanged()
     setHasStableIds(true)
     delegatesManager.addDelegate(TopsPageDelegate.thinTopsMovieDelegate(onMovieClickListener, onMakeTryToLoadMore))
       .addDelegate(TopsPageDelegate.thinProgressDelegate())

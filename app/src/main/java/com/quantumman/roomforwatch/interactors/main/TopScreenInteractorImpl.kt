@@ -75,7 +75,7 @@ class TopScreenInteractorImpl @Inject constructor(
       TopsMoviesHorizontalItem(
         title = model.title,
         category = model.category,
-        movies = IntRange(1, 3).map { ProgressThinItem }
+        movies = IntRange(1, 5).map { ProgressThinItem }
       )
     }
     is PagingState.Content -> {

@@ -1,4 +1,4 @@
-package com.quantumman.roomforwatch.ui.fragments
+package com.quantumman.roomforwatch.ui.description
 
 import android.os.Bundle
 import android.view.View
@@ -6,7 +6,6 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.quantumman.roomforwatch.R
 import com.quantumman.roomforwatch.databinding.FragmentMovieDescriptionBinding
@@ -27,6 +26,7 @@ class MovieDescriptionFragment : Fragment(R.layout.fragment_movie_description) {
     (viewModel::getMovieById)(args.movieId)
 
     with(binding) {
+
       viewModel.data.observe(viewLifecycleOwner, Observer {
         if (it is DescriptionMovie) {
           movie = it
@@ -34,17 +34,15 @@ class MovieDescriptionFragment : Fragment(R.layout.fragment_movie_description) {
       })
     }
 
-    val callback: OnBackPressedCallback =
+    requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
       object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
-          findNavController().popBackStack(R.id.fragment_tops, true)
+         viewModel.goBackToTopPage(requireView())
         }
-      }
-
-    requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+      })
 
     binding.ivBtnBackToTopPage.setOnClickListener {
-      findNavController().popBackStack(R.id.fragment_tops, false)
+      viewModel.goBackToTopPage(it)
     }
   }
 }
