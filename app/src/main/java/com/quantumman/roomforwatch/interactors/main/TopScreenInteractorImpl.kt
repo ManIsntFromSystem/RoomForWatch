@@ -1,19 +1,15 @@
 package com.quantumman.roomforwatch.interactors.main
 
 import com.quantumman.data.remote.api.Api
-import com.quantumman.data.remote.api.datasources.MoviesRemoteDataSource
 import com.quantumman.data.remote.api.PagingState
+import com.quantumman.data.remote.api.datasources.MoviesRemoteDataSource
 import com.quantumman.data.remote.model.movies.CategoryType
 import com.quantumman.data.remote.services.MovieService
 import com.quantumman.roomforwatch.model.base.ListItem
 import com.quantumman.roomforwatch.model.movies.topscreen.ItemTopsMovieThin
 import com.quantumman.roomforwatch.model.movies.topscreen.ProgressThinItem
 import com.quantumman.roomforwatch.model.movies.topscreen.TopsMoviesHorizontalItem
-import com.quantumman.roomforwatch.repositories.*
-import com.quantumman.roomforwatch.repositories.main.NowPlayingMoviesRepositoryImpl
-import com.quantumman.roomforwatch.repositories.main.PopularMoviesRepositoryImpl
-import com.quantumman.roomforwatch.repositories.main.TopRatedMoviesRepositoryImpl
-import com.quantumman.roomforwatch.repositories.main.UpcomingMoviesRepositoryImpl
+import com.quantumman.roomforwatch.repositories.main.*
 import com.quantumman.roomforwatch.repositories.model.MovieCategoryModel
 import com.quantumman.roomforwatch.util.ResourceProvider
 import kotlinx.coroutines.flow.Flow

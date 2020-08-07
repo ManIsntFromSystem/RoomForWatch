@@ -2,11 +2,10 @@ package com.quantumman.roomforwatch.interactors.detals
 
 import com.quantumman.data.remote.api.Api
 import com.quantumman.data.remote.api.MovieState
-import com.quantumman.data.remote.api.PagingState
 import com.quantumman.roomforwatch.model.base.DescriptionItem
 import com.quantumman.roomforwatch.model.movies.description.DescriptionMovie
 import com.quantumman.roomforwatch.model.movies.description.ProgressDescriptionMovie
-import com.quantumman.roomforwatch.repositories.DescMovieRepository
+import com.quantumman.roomforwatch.repositories.description.DescMovieRepository
 import com.quantumman.roomforwatch.repositories.model.MovieDescModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine

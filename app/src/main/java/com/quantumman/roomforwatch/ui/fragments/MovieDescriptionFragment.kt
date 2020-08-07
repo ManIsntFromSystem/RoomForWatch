@@ -13,7 +13,7 @@ import com.quantumman.roomforwatch.databinding.FragmentMovieDescriptionBinding
 import com.quantumman.roomforwatch.di.TopsScreenComponent
 import com.quantumman.roomforwatch.model.movies.description.DescriptionMovie
 import com.quantumman.roomforwatch.util.viewBinding
-import com.quantumman.roomforwatch.vm.main.MovieDescriptionViewModel
+import com.quantumman.roomforwatch.vm.description.MovieDescriptionViewModel
 
 class MovieDescriptionFragment : Fragment(R.layout.fragment_movie_description) {
 
@@ -48,17 +48,3 @@ class MovieDescriptionFragment : Fragment(R.layout.fragment_movie_description) {
     }
   }
 }
-
-//    val navController = Navigation.findNavController(view)
-//    requireActivity().onBackPressedDispatcher.addCallback(this) {
-//      navController.popBackStack(R.id.backFromDescriptionToTopPage, false)
-//    }
-
-//  fun onBackPressed() {
-//    onReturnToPreviousScreen()
-//  }
-//
-//  private fun onReturnToPreviousScreen() {
-//    findNavController().popBackStack()
-//  }
-

@@ -1,4 +1,4 @@
-package com.quantumman.roomforwatch.repositories
+package com.quantumman.roomforwatch.repositories.main
 
 import com.quantumman.roomforwatch.repositories.model.MovieCategoryModel
 import kotlinx.coroutines.flow.Flow

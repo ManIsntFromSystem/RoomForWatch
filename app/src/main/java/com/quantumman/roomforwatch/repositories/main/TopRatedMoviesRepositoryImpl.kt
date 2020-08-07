@@ -3,7 +3,6 @@ package com.quantumman.roomforwatch.repositories.main
 import com.quantumman.data.remote.api.datasources.MoviesRemoteDataSource
 import com.quantumman.data.remote.model.movies.CategoryType
 import com.quantumman.roomforwatch.R
-import com.quantumman.roomforwatch.repositories.MovieCategoryRepository
 import com.quantumman.roomforwatch.repositories.model.MovieCategoryModel
 import com.quantumman.roomforwatch.util.ResourceProvider
 import kotlinx.coroutines.flow.Flow

@@ -1,4 +1,4 @@
-package com.quantumman.roomforwatch.extensiones
+package com.quantumman.roomforwatch.util
 
 import androidx.lifecycle.MutableLiveData
 

@@ -1,4 +1,4 @@
-package com.quantumman.roomforwatch.vm.main
+package com.quantumman.roomforwatch.vm.description
 
 import android.view.View
 import androidx.lifecycle.LiveData

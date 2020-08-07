@@ -1,7 +1,6 @@
-package com.quantumman.roomforwatch.repositories
+package com.quantumman.roomforwatch.repositories.description
 
 import com.quantumman.data.remote.api.datasources.MovieDescRemoteDataSource
-import com.quantumman.data.remote.model.movies.MovieDTO
 import com.quantumman.roomforwatch.R
 import com.quantumman.roomforwatch.repositories.model.MovieDescModel
 import com.quantumman.roomforwatch.util.ResourceProvider

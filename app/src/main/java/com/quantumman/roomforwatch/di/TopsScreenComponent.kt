@@ -8,10 +8,10 @@ import com.quantumman.roomforwatch.interactors.detals.DescMovieScreenInteractor
 import com.quantumman.roomforwatch.interactors.detals.DescMovieScreenInteractorImpl
 import com.quantumman.roomforwatch.interactors.main.TopScreenInteractor
 import com.quantumman.roomforwatch.interactors.main.TopScreenInteractorImpl
-import com.quantumman.roomforwatch.repositories.DescMovieRepository
-import com.quantumman.roomforwatch.repositories.DescMovieRepositoryImpl
+import com.quantumman.roomforwatch.repositories.description.DescMovieRepository
+import com.quantumman.roomforwatch.repositories.description.DescMovieRepositoryImpl
 import com.quantumman.roomforwatch.util.ResourceProvider
-import com.quantumman.roomforwatch.vm.main.MovieDescriptionViewModel
+import com.quantumman.roomforwatch.vm.description.MovieDescriptionViewModel
 import com.quantumman.roomforwatch.vm.main.TopsMoviesViewModel
 import dagger.Binds
 import dagger.BindsInstance
