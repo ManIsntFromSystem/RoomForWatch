@@ -1,10 +1,10 @@
 package com.quantumman.roomforwatch.interactors.main
 
-import com.quantumman.data.remote.api.Api
 import com.quantumman.data.remote.api.PagingState
 import com.quantumman.data.remote.api.datasources.MoviesRemoteDataSource
 import com.quantumman.data.remote.model.movies.CategoryType
 import com.quantumman.data.remote.services.MovieService
+import com.quantumman.roomforwatch.extensions.getPosterPath
 import com.quantumman.roomforwatch.model.base.ListItem
 import com.quantumman.roomforwatch.model.movies.topscreen.ItemTopsMovieThin
 import com.quantumman.roomforwatch.model.movies.topscreen.ProgressThinItem
@@ -86,7 +86,7 @@ class TopScreenInteractorImpl @Inject constructor(
           ItemTopsMovieThin(
             id = it.id,
             title = it.title,
-            image = Api.getPosterPath(it.posterVertical)
+            image = it.posterVertical.getPosterPath()
           )
         }
       )
@@ -99,7 +99,7 @@ class TopScreenInteractorImpl @Inject constructor(
           ItemTopsMovieThin(
             id = it.id,
             title = it.title,
-            image = Api.getPosterPath(it.posterVertical)
+            image = it.posterVertical.getPosterPath()
           )
         }.plus(ProgressThinItem)
       )

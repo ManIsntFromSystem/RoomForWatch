@@ -1,15 +1,11 @@
 package com.quantumman.data.remote.helpers
 
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.quantumman.data.BuildConfig
-import com.quantumman.data.remote.services.MovieService
 import com.quantumman.data.remote.api.Api.BASE_URL
+import com.quantumman.data.remote.services.MovieService
 import dagger.Component
 import dagger.Module
 import dagger.Provides
-import kotlinx.serialization.json.Json
-import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

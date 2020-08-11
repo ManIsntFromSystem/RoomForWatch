@@ -1,12 +1,15 @@
 package com.quantumman.roomforwatch.vm.main
 
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.Navigation.findNavController
 import com.quantumman.data.remote.model.movies.CategoryType
 import com.quantumman.roomforwatch.interactors.main.TopScreenInteractor
 import com.quantumman.roomforwatch.model.base.ListItem
 import com.quantumman.roomforwatch.model.movies.topscreen.TopsMoviesHorizontalItem
+import com.quantumman.roomforwatch.ui.main.TopsMoviesFragmentDirections
 import com.quantumman.roomforwatch.vm.BaseViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -38,12 +41,10 @@ class TopsMoviesViewModel @Inject constructor(
     }
   }
 
-//  fun intoMovieDescription(movieId: Int) {
-//    println("MovieId Listener: $movieId")
-//    val action = TopsMoviesFragmentDirections.navigateToMovieDescFragment(movieId)
-//
-//    Navigation.findNavController(R.layout.fragment_tops).navigate(action)
-//  }
+  fun intoMovieDescription(view: View, movieId: Int) {
+    val action = TopsMoviesFragmentDirections.actionFromTopToMovieDesc(movieId)
+    findNavController(view).navigate(action)
+  }
 }
 
 //  private val state: MutableLiveData<MovieState> =

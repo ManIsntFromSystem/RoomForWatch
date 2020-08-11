@@ -11,10 +11,10 @@
     android:label="Tops"
     tools:layout="@layout/fragment_tops">
     <action
-      android:id="@+id/navigateToMovieDescFragment"
+      android:id="@+id/actionFromTopToMovieDesc"
       app:destination="@id/navigationMovieDescription"
       app:popUpTo="@id/navigationTops"
-      app:popUpToInclusive="true" />
+      app:popUpToInclusive="false" />
   </fragment>
 
   <fragment
@@ -23,8 +23,9 @@
     android:label="Favourites"
     tools:layout="@layout/fragment_favourites">
     <action
-      android:id="@+id/action_navigation_favourites_to_navigation_movie_desc"
-      app:destination="@id/navigationMovieDescription" />
+      android:id="@+id/actionFromFavouritesToMovieDesc"
+      app:destination="@id/navigationMovieDescription"
+      app:popUpTo="@id/navigationFavourites"/>
   </fragment>
 
   <fragment

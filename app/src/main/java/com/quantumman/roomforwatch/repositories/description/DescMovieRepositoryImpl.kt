@@ -2,7 +2,7 @@ package com.quantumman.roomforwatch.repositories.description
 
 import com.quantumman.data.remote.api.datasources.MovieDescRemoteDataSource
 import com.quantumman.roomforwatch.R
-import com.quantumman.roomforwatch.repositories.model.MovieDescModel
+import com.quantumman.roomforwatch.repositories.model.MovieDescriptionModel
 import com.quantumman.roomforwatch.util.ResourceProvider
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -13,8 +13,8 @@ class DescMovieRepositoryImpl  @Inject constructor(
   private val resource: ResourceProvider
 ) : DescMovieRepository {
 
-  override fun data(): Flow<MovieDescModel> = dataSource.observe().map {
-    MovieDescModel(
+  override fun data(): Flow<MovieDescriptionModel> = dataSource.observe().map {
+    MovieDescriptionModel(
       title = resource.string(R.string.description_movie_title),
       dataState = it
     )
