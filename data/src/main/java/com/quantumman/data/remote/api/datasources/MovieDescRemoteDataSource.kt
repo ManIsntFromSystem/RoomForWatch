@@ -1,8 +1,6 @@
 package com.quantumman.data.remote.api.datasources
 
 import com.quantumman.data.remote.api.MovieState
-import com.quantumman.data.remote.api.PagingState
-import com.quantumman.data.remote.model.movies.MovieDTO
 import com.quantumman.data.remote.model.movies.MovieDetailedDTO
 import com.quantumman.data.remote.services.MovieService
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
@@ -17,7 +15,7 @@ class MovieDescRemoteDataSource @Inject constructor(private val api: MovieServic
   @Synchronized
   suspend fun getMovieByIdDS(movieId: Int) {
     if (chanel.value is MovieState.Initial) {
-      val response = api.fetchMovieDescription(id = movieId)
+      val response = api.fetchMovieById(id = movieId)
       chanel.send(MovieState.Content(response))
     }
   }

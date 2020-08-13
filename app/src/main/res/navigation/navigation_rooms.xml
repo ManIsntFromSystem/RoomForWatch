@@ -7,7 +7,7 @@
 
   <fragment
     android:id="@+id/navigationTops"
-    android:name="com.quantumman.roomforwatch.ui.main.TopsMoviesFragment"
+    android:name="com.quantumman.roomforwatch.ui.main.tops.TopMoviesFragment"
     android:label="Tops"
     tools:layout="@layout/fragment_tops">
     <action
@@ -19,7 +19,7 @@
 
   <fragment
     android:id="@+id/navigationFavourites"
-    android:name="com.quantumman.roomforwatch.ui.fragments.FavouritesMoviesFragment"
+    android:name="com.quantumman.roomforwatch.ui.main.fragments.FavouritesMoviesFragment"
     android:label="Favourites"
     tools:layout="@layout/fragment_favourites">
     <action
@@ -30,7 +30,7 @@
 
   <fragment
     android:id="@+id/navigationMovieDescription"
-    android:name="com.quantumman.roomforwatch.ui.description.MovieDescriptionFragment"
+    android:name="com.quantumman.roomforwatch.ui.main.description.MovieDescriptionFragment"
     android:label="Movie"
     tools:layout="@layout/fragment_movie_description">
     <argument
@@ -44,7 +44,7 @@
 
   <fragment
     android:id="@+id/navigationUser"
-    android:name="com.quantumman.roomforwatch.ui.fragments.UserFragment"
+    android:name="com.quantumman.roomforwatch.ui.main.fragments.UserFragment"
     android:label="User"
     tools:layout="@layout/fragment_user" />
 

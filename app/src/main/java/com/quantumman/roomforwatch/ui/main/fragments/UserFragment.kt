@@ -1,4 +1,4 @@
-package com.quantumman.roomforwatch.ui.fragments
+package com.quantumman.roomforwatch.ui.main.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,18 +9,18 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.quantumman.roomforwatch.R
-import com.quantumman.roomforwatch.vm.favourites.FavouritesMoviesViewModel
+import com.quantumman.roomforwatch.vm.user.UserViewModel
 
-class FavouritesMoviesFragment : Fragment() {
-    private val favouritesVM: FavouritesMoviesViewModel by activityViewModels()
+class UserFragment : Fragment() {
+    private val userVM: UserViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val root = inflater.inflate(R.layout.fragment_favourites, container, false)
-        val textView: TextView = root.findViewById(R.id.text_favourites)
-        favouritesVM.text.observe(viewLifecycleOwner, Observer {
+        val root = inflater.inflate(R.layout.fragment_user, container, false)
+        val textView: TextView = root.findViewById(R.id.text_user)
+        userVM.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

@@ -1,11 +1,10 @@
-package com.quantumman.roomforwatch.ui.description
+package com.quantumman.roomforwatch.ui.main.description
 
 import android.os.Bundle
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.quantumman.roomforwatch.R

@@ -1,30 +1,31 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlinx-serialization'
 
-
 android {
-  compileSdkVersion 29
+  compileSdkVersion 30
 
   defaultConfig {
     minSdkVersion 23
-    targetSdkVersion 29
+    targetSdkVersion 30
     versionCode 1
     versionName "1.0"
 
-    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     consumerProguardFiles "consumer-rules.pro"
-
-
   }
 
   buildTypes {
+    debug {
+      buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org\"")
+      buildConfigField("String", "API_KEY", "\"86b59aba7ad323dc9326d37105201143\"")
+    }
+
     release {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+      buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org\"")
+      buildConfigField("String", "API_KEY", "\"86b59aba7ad323dc9326d37105201143\"")
     }
   }
 }
@@ -38,9 +39,6 @@ repositories {
 dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
   implementation 'androidx.core:core-ktx:1.3.1'
-  testImplementation 'junit:junit:4.12'
-  androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-  androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
   // Kotlin setup
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

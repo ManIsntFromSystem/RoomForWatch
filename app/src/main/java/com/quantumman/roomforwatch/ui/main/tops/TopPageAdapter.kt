@@ -1,4 +1,4 @@
-package com.quantumman.roomforwatch.ui.main
+package com.quantumman.roomforwatch.ui.main.tops
 
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
 import com.quantumman.data.remote.model.movies.CategoryType
@@ -13,7 +13,7 @@ class TopPageAdapter(
 ) : AsyncListDifferDelegationAdapter<ListItem>(BaseDiffUtilItemCallBack()) {
   init {
     delegatesManager.addDelegate(
-      TopsPageDelegate.moviesHorizontalDelegate(
+      TopPageDelegate.moviesHorizontalDelegate(
         onItemBind = onItemBind,
         onMovieClickListener = onMovieClickListener,
         onMakeTryToLoadMore = onMakeTryToLoadMore

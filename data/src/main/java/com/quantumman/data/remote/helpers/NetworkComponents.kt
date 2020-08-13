@@ -1,7 +1,6 @@
 package com.quantumman.data.remote.helpers
 
 import com.quantumman.data.BuildConfig
-import com.quantumman.data.remote.api.Api.BASE_URL
 import com.quantumman.data.remote.services.MovieService
 import dagger.Component
 import dagger.Module
@@ -26,7 +25,7 @@ abstract class NetworkModule {
     @Provides
     @Singleton
     fun provideApi(okHttpClient: OkHttpClient): MovieService = Retrofit.Builder()
-      .baseUrl(BASE_URL)
+      .baseUrl(ApiContract.BASE_URL)
       .client(okHttpClient)
       .addConverterFactory(GsonConverterFactory.create())
       .build()

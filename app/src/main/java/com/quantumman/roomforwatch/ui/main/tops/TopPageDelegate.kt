@@ -1,4 +1,4 @@
-package com.quantumman.roomforwatch.ui.main
+package com.quantumman.roomforwatch.ui.main.tops
 
 import android.app.Activity
 import com.bumptech.glide.Glide
@@ -16,7 +16,7 @@ import com.quantumman.roomforwatch.model.movies.topscreen.ItemTopsMovieThin
 import com.quantumman.roomforwatch.model.movies.topscreen.ProgressThinItem
 import com.quantumman.roomforwatch.model.movies.topscreen.TopsMoviesHorizontalItem
 
-object TopsPageDelegate {
+object TopPageDelegate {
 
   fun moviesHorizontalDelegate(onItemBind: (TopsMoviesHorizontalItem) -> Unit,
                                onMovieClickListener: (Int) -> Unit,
@@ -27,10 +27,11 @@ object TopsPageDelegate {
       }
     ) {
       //OnCreateViewHolder
-      val adapter = TopMoviesHorizontalAdapter(
-        { movie -> onMovieClickListener.invoke(movie) },
-        { pos -> onMakeTryToLoadMore.invoke(item.category, pos) }
-      )
+      val adapter =
+        TopMoviesHorizontalAdapter(
+          { movie -> onMovieClickListener.invoke(movie) },
+          { pos -> onMakeTryToLoadMore.invoke(item.category, pos) }
+        )
 
       binding.recyclerItemTopPage.adapter = adapter
       //OnBindViewHolder

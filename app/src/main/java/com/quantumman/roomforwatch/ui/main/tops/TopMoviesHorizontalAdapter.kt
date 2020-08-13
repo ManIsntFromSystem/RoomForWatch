@@ -1,4 +1,4 @@
-package com.quantumman.roomforwatch.ui.main
+package com.quantumman.roomforwatch.ui.main.tops
 
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
 import com.quantumman.roomforwatch.model.base.ListItem
@@ -9,8 +9,13 @@ class TopMoviesHorizontalAdapter(onMovieClickListener: (Int) -> Unit, onMakeTryT
   init {
     notifyDataSetChanged()
     setHasStableIds(true)
-    delegatesManager.addDelegate(TopsPageDelegate.thinTopsMovieDelegate(onMovieClickListener, onMakeTryToLoadMore))
-      .addDelegate(TopsPageDelegate.thinProgressDelegate())
+    delegatesManager.addDelegate(
+      TopPageDelegate.thinTopsMovieDelegate(
+        onMovieClickListener,
+        onMakeTryToLoadMore
+      )
+    )
+      .addDelegate(TopPageDelegate.thinProgressDelegate())
   }
 
   override fun getItemId(position: Int): Long {

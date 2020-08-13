@@ -1,4 +1,4 @@
-package com.quantumman.roomforwatch.ui.main
+package com.quantumman.roomforwatch.ui.main.tops
 
 import android.os.Bundle
 import android.util.Log
@@ -12,7 +12,7 @@ import com.quantumman.roomforwatch.di.TopsScreenComponent
 import com.quantumman.roomforwatch.util.viewBinding
 import com.quantumman.roomforwatch.vm.main.TopsMoviesViewModel
 
-class TopsMoviesFragment : Fragment(R.layout.fragment_tops) {
+class TopMoviesFragment : Fragment(R.layout.fragment_tops) {
 
   private val component by lazy { TopsScreenComponent.create() }
   private val binding by viewBinding { FragmentTopsBinding.bind(it) }

@@ -1,4 +1,4 @@
-package com.quantumman.roomforwatch.util
+package com.quantumman.roomforwatch.extensions
 
 import android.app.Activity
 import android.content.SharedPreferences

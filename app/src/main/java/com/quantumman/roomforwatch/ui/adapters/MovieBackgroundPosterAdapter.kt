@@ -11,8 +11,9 @@ object UIUtil {
   fun loadPosterUrl(view: ImageView, imageUrl: String?) {
     Glide.with(view.context)
       .load(imageUrl)
-      .error(R.drawable.ic_poster_tmdb)
+      .placeholder(R.color.appBlack)
       .centerCrop()
+      .error(R.drawable.ic_poster_tmdb)
       .into(view)
   }
 }
